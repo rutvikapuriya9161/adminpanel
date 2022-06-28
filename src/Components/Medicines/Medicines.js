@@ -9,6 +9,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import * as yup from 'yup';
 import { ErrorMessage, Form, Formik, useFormik } from 'formik';
 import { DataGrid } from '@mui/x-data-grid';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function Medicines(props) {
@@ -32,22 +34,20 @@ function Medicines(props) {
     });
 
     const handleInsert = (values) => {
-        let localData = localStorage.getItem("madicines");
+        let localData = JSON.parse(localStorage.getItem("medicines"));
 
-        let id = Math.floor(Math.random()*1000);
-
-        // console.log(id, values);
+        let id = Math.floor(Math.random() * 1000);
 
         let data = {
-            id: "id",
+            id: id,
             ...values
         }
 
         if (localData === null) {
-            localStorage.setItem("medicines", JSON.stringify( data ));
+            localStorage.setItem("medicines", JSON.stringify([data]));
         } else {
             localData.push(data);
-            localStorage.setItem("medicines", JSON.stringify(data));
+            localStorage.setItem("medicines", JSON.stringify(localData));
         }
 
         loadData();
@@ -74,23 +74,43 @@ function Medicines(props) {
         { field: 'price', headerName: 'Price', width: 170 },
         { field: 'quantity', headerName: 'Quantity', width: 170 },
         { field: 'expiry', headerName: 'Expiry', width: 170 },
+        {
+            field: 'action',
+            headerName: 'Action',
+            width: 170,
+            renderCell: (params) => (
+                <IconButton aria-label="delete" onClick={() => handleDelete(params)}>
+                    <DeleteIcon />
+                </IconButton>
+            )
+        },
     ];
 
-    const localData = () => {
-        let localData = JSON.parse(localStorage.getItem("madicines"));
-        setData(localData);
+    const loadData = () => {
+        let localData = JSON.parse(localStorage.getItem("medicines"));
+
+        if (localData !== null) {
+            setData(localData);
+        }
     }
 
-    useEffect (
-        () =>{
+    useEffect(
+        () => {
             loadData();
         },
-    [])
+        [])
 
     const { handleBlur, handleChange, handleSubmit, errors, touched } = formik;
-        let loadData = () => {
 
-        }
+    const handleDelete = (params) => {
+        let localData = JSON.parse (localStorage.getItem("medicines"));
+
+        let fData = localData.filter = ((l) => l.id !== params.id);
+
+        localStorage.setItem("medicines", JSON.stringify(fData));
+
+        loadData();
+    }
 
     return (
         <div>
