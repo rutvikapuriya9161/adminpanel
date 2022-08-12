@@ -21,7 +21,17 @@ import MailIcon from '@mui/icons-material/Mail';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices'; 
 import PersonIcon from '@mui/icons-material/Person';
 import { NavLink } from 'react-router-dom';
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 
+
+const listItemData = [
+  { lable: 'Medicines', to: '/medicines', icon: <MedicalServicesIcon />},
+  { lable: 'Patients', to: '/patients', icon: <PersonIcon />},
+  // { lable: 'Patients', to: '/patients', icon: <PersonIcon />},
+  { lable: 'Counter', to: '/Counter', icon: <HourglassEmptyIcon />},
+  { lable: 'PromiseExample', to: '/PromiseExample', icon: <HourglassEmptyIcon />},
+
+]
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -101,12 +111,7 @@ export default function Layout({children}) {
     setOpen(false);
   };
 
-  const listItemData = [
-    { lable: 'Medicines', to: '/medicines', icon: <MedicalServicesIcon />},
-    // { lable: 'Patients', to: '/patients', icon: <PersonIcon />}
-    { lable: 'Patients', to: '/patients', icon: <PersonIcon />},
-    { lable: 'Counter', to: '/Counter', icon: <PersonIcon />},
-  ]
+ 
 
   return (
     <Box sx={{ display: 'flex' }}>

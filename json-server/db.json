@@ -1,0 +1,56 @@
+{
+    "Medicines": [
+        {
+            "id": 1,
+            "name": "ABC",
+            "price": "10",
+            "quantity": "30",
+            "expiry": "2018"
+        },
+        {
+            "id": 2,
+            "name": "PQR",
+            "price": "20",
+            "quantity": "50",
+            "expiry": "2024"
+        },
+        {
+            "id": 3,
+            "name": "JKL",
+            "price": "30",
+            "quantity": "70",
+            "expiry": "2023"
+        },
+        {
+            "id": 4,
+            "name": "XYZ",
+            "price": "40",
+            "quantity": "60",
+            "expiry": "2022"
+        },
+        {
+            "id": 5,
+            "name": "LMN",
+            "price": "50",
+            "quantity": "90",
+            "expiry": "2019"
+        },
+        {
+            "id": 6,
+            "name": "STU",
+            "price": "60",
+            "quantity": "10",
+            "expiry": "2020"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    }
+}
